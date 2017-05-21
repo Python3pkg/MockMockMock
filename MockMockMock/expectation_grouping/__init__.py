@@ -2,8 +2,8 @@
 
 # Copyright 2013-2015 Vincent Jacques <vincent@vincent-jacques.net>
 
-from ordering_policies import OrderedOrderingPolicy, UnorderedOrderingPolicy
-from completion_policies import AllCompletionPolicy, AnyCompletionPolicy, RepeatedCompletionPolicy, ExactlyOneCompletionPolicy
+from .ordering_policies import OrderedOrderingPolicy, UnorderedOrderingPolicy
+from .completion_policies import AllCompletionPolicy, AnyCompletionPolicy, RepeatedCompletionPolicy, ExactlyOneCompletionPolicy
 
 
 class ExpectationWrapper(object):

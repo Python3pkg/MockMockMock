@@ -3,7 +3,8 @@
 # Copyright 2013-2015 Vincent Jacques <vincent@vincent-jacques.net>
 
 import MockMockMock
-import arguments_checking
+from . import arguments_checking
+import collections
 
 
 class Expectation(object):
@@ -110,7 +111,7 @@ class CallRecorder:
                 "return": ret,
             })
             return ret
-        except Exception, e:
+        except Exception as e:
             self.__handler.addRecordedCall({
                 "object": self.__mockName,
                 "attribute": self.__attrName,
@@ -206,7 +207,7 @@ class ExpectationHandler(object):
     def recordCall(self, realObject, mockName, attrName):
         try:
             attr = getattr(realObject, attrName)
-            if callable(attr):
+            if isinstance(attr, collections.Callable):
                 return CallRecorder(self, mockName, attrName, attr)
             else:
                 self.addRecordedCall({
@@ -215,7 +216,7 @@ class ExpectationHandler(object):
                     "return": attr,
                 })
                 return attr
-        except Exception, e:
+        except Exception as e:
             self.addRecordedCall({
                 "object": mockName,
                 "attribute": attrName,

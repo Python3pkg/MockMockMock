@@ -25,7 +25,7 @@ class TestDependency:
         raise self.the_exception
 
     def instance_method(self, x, y, *args, **kwds):
-        return str((x, y, args, sorted(kwds.iteritems())))
+        return str((x, y, args, sorted(kwds.items())))
 
     @classmethod
     def class_method(cls, x, y):
